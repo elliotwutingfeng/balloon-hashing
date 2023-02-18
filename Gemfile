@@ -1,4 +1,4 @@
 source 'https://rubygems.org'
 
-gem 'rspec', require: false, group: :test
+gem 'rspec'
 gem 'simplecov', require: false, group: :test
