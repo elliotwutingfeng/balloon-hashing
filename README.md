@@ -51,6 +51,7 @@ bs.unpack1('H*') # OUTPUT: 69f86890cef40a7ec5f70daff1ce8e2cde233a15bffa785e7efdb
 ## Testing
 
 ```bash
+gem install bundler
 bundle install
 bundle exec rspec
 ```
@@ -58,6 +59,8 @@ bundle exec rspec
 ## Formatting
 
 ```bash
+gem install bundler
+bundle install
 rubocop -lx
 ```
 
