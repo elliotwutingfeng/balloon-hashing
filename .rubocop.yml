@@ -1,0 +1,14 @@
+AllCops:
+  NewCops: enable
+Metrics/AbcSize:
+  Max: 27
+Metrics/BlockLength:
+  Max: 80
+Metrics/CyclomaticComplexity:
+  Max: 10
+Metrics/MethodLength:
+  Max: 15
+Metrics/ParameterLists:
+  Max: 6
+Style/FrozenStringLiteralComment:
+  Enabled: false

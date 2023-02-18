@@ -1,0 +1,59 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3
+
+      - name: Run bundle install
+        run: |
+          gem install bundler
+
+      - name: Run tests
+        run: |
+          bundle exec rspec
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+
+  format-markdown:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Format Markdown with markdownlint
+        run: |
+          npm install -g markdownlint-cli
+          markdownlint --disable MD013 --fix .
+          git add -A
+          git diff --cached --exit-code
+
+  format-ruby:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3
+
+      - name: Install rubocop
+        run: |
+          gem install rubocop
+
+      - name: Format Ruby with rubocop
+        run: |
+          rubocop -lx
