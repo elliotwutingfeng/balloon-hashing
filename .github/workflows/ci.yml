@@ -14,13 +14,14 @@ jobs:
         with:
           ruby-version: 3
 
-      - name: Install rspec
+      - name: Run bundle install
         run: |
-          gem install rspec
+          gem install bundler
+          bundle install
 
       - name: Run tests
         run: |
-          rspec
+          bundle exec rspec
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
