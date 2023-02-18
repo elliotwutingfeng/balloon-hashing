@@ -1,7 +1,7 @@
 # Balloon Hashing
 
 [![Ruby](https://img.shields.io/badge/Ruby-CC342D?style=for-the-badge&logo=ruby&logoColor=white)](https://ruby-lang.org)
-[![Codecov Coverage](https://img.shields.io/codecov/c/github/elliotwutingfeng/balloon-hashing?color=bright-green&logo=codecov&style=for-the-badge&token=)](https://codecov.io/gh/elliotwutingfeng/balloon-hashing)
+[![Codecov Coverage](https://img.shields.io/codecov/c/github/elliotwutingfeng/balloon-hashing?color=bright-green&logo=codecov&style=for-the-badge&token=bAIdJbJmW0)](https://codecov.io/gh/elliotwutingfeng/balloon-hashing)
 
 [![GitHub license](https://img.shields.io/badge/LICENSE-BSD--3--CLAUSE-GREEN?style=for-the-badge)](LICENSE)
 
