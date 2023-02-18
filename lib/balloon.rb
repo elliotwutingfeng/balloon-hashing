@@ -81,7 +81,7 @@ end
 # @return [Integer] Updates the buffer and counter, and returns the counter
 #
 def expand(buf, cnt, space_cost)
-  (1..space_cost - 1).each do |s|
+  (1...space_cost).each do |s|
     buf << hash_func(cnt, buf[s - 1])
     cnt += 1
   end
@@ -105,11 +105,11 @@ end
 # @return [nil] Updates the buffer and counter
 #
 def mix(buf, cnt, delta, salt, space_cost, time_cost)
-  (0..time_cost - 1).each do |t|
-    (0..space_cost - 1).each do |s|
+  (0...time_cost).each do |t|
+    (0...space_cost).each do |s|
       buf[s] = hash_func(cnt, buf[s - 1], buf[s])
       cnt += 1
-      (0..delta - 1).each do |i|
+      (0...delta).each do |i|
         idx_block = hash_func(t, s, i)
         # Converts byte array to integer (little endian), see https://stackoverflow.com/a/68855488
         other = (hash_func(cnt, salt, idx_block).bytes.reverse.inject(0) { |m, b| (m << 8) + b }) % space_cost
@@ -188,7 +188,7 @@ end
 #
 def balloon_m(password, salt, space_cost, time_cost, parallel_cost, delta = 3)
   threads = []
-  (0..parallel_cost - 1).each do |p|
+  (0...parallel_cost).each do |p|
     threads << Thread.new do
       parallel_salt = "#{salt}#{(p + 1).to_bytestring}"
       balloon(password, parallel_salt, space_cost, time_cost, delta)
