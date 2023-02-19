@@ -15,9 +15,9 @@ HASH_TYPE = :sha256
 #
 class Integer
   #
-  # Convert Integer of length 8 bytes to bytes String in little endian
+  # Convert Integer of length 8 bytes to bytes String in little endian.
   #
-  # @return [String] Bytes String in little endian
+  # @return [String] Bytes String in little endian.
   #
   def to_bytestring
     [self].pack('Q<')
@@ -31,9 +31,9 @@ class String
   #
   # XOR two strings
   #
-  # @param [String] other Other string to XOR with
+  # @param [String] other Other string to XOR with.
   #
-  # @return [String] XOR result
+  # @return [String] XOR result.
   #
   def ^(other)
     # Modified from https://stackoverflow.com/a/6099613
@@ -49,11 +49,11 @@ end
 #
 # Concatenate all the arguments and hash the result.
 # Note that the hash function used can be modified
-# in the global parameter HASH_TYPE.
+# in the global parameter `HASH_TYPE``.
 #
-# @param [Any] *args Arguments to concatenate
+# @param [Any] *args Arguments to concatenate.
 #
-# @return [String] The hashed string
+# @return [String] The hashed string.
 #
 def hash_func(*args)
   t = ''
@@ -75,8 +75,8 @@ end
 # of the password and the previous hash.
 #
 # @param [Array] buf An array of hashes as bytes.
-# @param [Integer] cnt Used in a security proof (read the paper)
-# @param [Integer] space_cost The size of the buffer
+# @param [Integer] cnt Used in a security proof (read the paper).
+# @param [Integer] space_cost The size of the buffer.
 #
 # @return [Integer] Updates the buffer and counter, and returns the counter
 #
@@ -89,20 +89,20 @@ def expand(buf, cnt, space_cost)
 end
 
 #
-# Second step of the algorithm. Mix time_cost number
+# Second step of the algorithm. Mix `time_cost` number
 # of times the pseudorandom bytes in the buffer. At each
 # step in the for loop, update the nth block to be
-# the hash of the n-1th block, the nth block, and delta
-# other blocks chosen at random from the buffer.
+# the hash of the n-1th block, the nth block, and `delta`
+# other blocks chosen at random from the buffer `buf`.
 #
-# @param [Array] buf A list of hashes as bytes.
-# @param [Integer] cnt Used in a security proof (read the paper)
+# @param [Array] buf An array of hashes as bytes.
+# @param [Integer] cnt Used in a security proof (read the paper).
 # @param [Integer] delta Number of random blocks to mix with.
-# @param [String] salt A user defined random value for security
-# @param [Integer] space_cost The size of the buffer
-# @param [Integer] time_cost Number of rounds to mix
+# @param [String] salt A user defined random value for security.
+# @param [Integer] space_cost The size of the buffer.
+# @param [Integer] time_cost Number of rounds to mix.
 #
-# @return [nil] Updates the buffer and counter
+# @return [nil] Updates the buffer and counter, but does not return anything.
 #
 def mix(buf, cnt, delta, salt, space_cost, time_cost)
   (0...time_cost).each do |t|
@@ -124,9 +124,9 @@ end
 #
 # Final step. Return the last value in the buffer.
 #
-# @param [Array] buf A list of hashes as bytes.
+# @param [Array] buf An array of hashes as bytes.
 #
-# @return [String] Last value of the buffer as bytes
+# @return [String] Last value of the buffer as bytes.
 #
 def extract(buf)
   buf[-1]
@@ -137,13 +137,13 @@ end
 # previously mentioned, first expand, then mix, and
 # finally extract. Note the result is returned as bytes String,
 # for a more friendly function with default values
-# and returning a hex string see the function `balloon_hash`
+# that returns a hex string, see the function `balloon_hash`.
 #
-# @param [String] password The main string to hash
-# @param [String] salt A user defined random value for security
-# @param [Integer] space_cost The size of the buffer
-# @param [Integer] time_cost Number of rounds to mix
-# @param [Integer] delta Number of random blocks to mix with.
+# @param [String] password The main string to hash.
+# @param [String] salt A user defined random value for security.
+# @param [Integer] space_cost The size of the buffer.
+# @param [Integer] time_cost Number of rounds to mix.
+# @param [Integer] delta Number of random blocks to mix with. Defaults to 3.
 #
 # @return [String] A series of bytes, the hash.
 #
@@ -158,10 +158,10 @@ end
 
 #
 # A more friendly client function that just takes
-# a password and a salt and computes outputs the hash in hex.
+# a password and a salt and outputs the hash as a hex string.
 #
-# @param [String] password The main string to hash
-# @param [String] salt A user defined random value for security
+# @param [String] password The main string to hash.
+# @param [String] salt A user defined random value for security.
 #
 # @return [String] The hash as hex.
 #
@@ -175,14 +175,14 @@ end
 #
 # M-core variant of the Balloon hashing algorithm. Note the result
 # is returned as bytes, for a more friendly function with default
-# values and returning a hex string see the function balloon_m_hash
+# values that returns a hex string, see the function `balloon_m_hash`.
 #
-# @param [String] password The main string to hash
-# @param [String] salt A user defined random value for security
-# @param [Integer] space_cost The size of the buffer
-# @param [Integer] time_cost Number of rounds to mix
-# @param [Integer] parallel_cost Number of concurrent instances
-# @param [Integer] delta Number of random blocks to mix with.
+# @param [String] password The main string to hash.
+# @param [String] salt A user defined random value for security.
+# @param [Integer] space_cost The size of the buffer.
+# @param [Integer] time_cost Number of rounds to mix.
+# @param [Integer] parallel_cost Number of concurrent instances.
+# @param [Integer] delta Number of random blocks to mix with. Defaults to 3.
 #
 # @return [String] A series of bytes, the hash.
 #
@@ -202,11 +202,11 @@ end
 
 #
 # A more friendly client function that just takes
-# a password and a salt and computes outputs the hash in hex.
+# a password and a salt and outputs the hash as a hex string.
 # This uses the M-core variant of the Balloon hashing algorithm.
 #
-# @param [String] password The main string to hash
-# @param [String] salt A user defined random value for security
+# @param [String] password The main string to hash.
+# @param [String] salt A user defined random value for security.
 #
 # @return [String] The hash as hex.
 #
