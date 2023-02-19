@@ -61,7 +61,7 @@ bundle exec rspec
 ```bash
 gem install bundler
 bundle install
-rubocop -lx
+rubocop -a
 ```
 
 ## References
