@@ -1,11 +1,20 @@
-require 'digest'
+require 'openssl'
 
 HASH_FUNCTIONS = {
-  md5: Digest::MD5,
-  sha1: Digest::SHA1,
-  sha256: Digest::SHA256,
-  sha384: Digest::SHA384,
-  sha512: Digest::SHA512
+  md5: OpenSSL::Digest.new('MD5'),
+  sha1: OpenSSL::Digest.new('SHA1'),
+  sha224: OpenSSL::Digest.new('SHA224'),
+  sha256: OpenSSL::Digest.new('SHA256'),
+  sha384: OpenSSL::Digest.new('SHA384'),
+  sha512: OpenSSL::Digest.new('SHA512'),
+  sha512_224: OpenSSL::Digest.new('SHA512-224'),
+  sha512_256: OpenSSL::Digest.new('SHA512-256'),
+  sha3_224: OpenSSL::Digest.new('SHA3-224'),
+  sha3_256: OpenSSL::Digest.new('SHA3-256'),
+  sha3_384: OpenSSL::Digest.new('SHA3-384'),
+  sha3_512: OpenSSL::Digest.new('SHA3-512'),
+  blake2s256: OpenSSL::Digest.new('BLAKE2s256'),
+  blake2b512: OpenSSL::Digest.new('BLAKE2b512')
 }.freeze
 
 HASH_TYPE = :sha256
