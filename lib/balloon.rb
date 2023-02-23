@@ -74,6 +74,7 @@ def hash_func(*args)
            arg
          end
   end
+  HASH_FUNCTIONS[HASH_TYPE].reset
   HASH_FUNCTIONS[HASH_TYPE].digest(t)
 end
 
