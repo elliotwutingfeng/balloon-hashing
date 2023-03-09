@@ -66,5 +66,6 @@ rubocop -a
 
 ## References
 
+* [Julia implementation](https://github.com/elliotwutingfeng/BalloonHashing.jl)
 * [Python implementation](https://github.com/nachonavarro/balloon-hashing)
 * [Rust implementation](https://crates.io/crates/balloon-hash)
