@@ -1,20 +1,20 @@
 require 'openssl'
 
 HASH_FUNCTIONS = {
-  md5: OpenSSL::Digest.new('MD5'),
-  sha1: OpenSSL::Digest.new('SHA1'),
-  sha224: OpenSSL::Digest.new('SHA224'),
-  sha256: OpenSSL::Digest.new('SHA256'),
-  sha384: OpenSSL::Digest.new('SHA384'),
-  sha512: OpenSSL::Digest.new('SHA512'),
-  sha512_224: OpenSSL::Digest.new('SHA512-224'),
-  sha512_256: OpenSSL::Digest.new('SHA512-256'),
-  sha3_224: OpenSSL::Digest.new('SHA3-224'),
-  sha3_256: OpenSSL::Digest.new('SHA3-256'),
-  sha3_384: OpenSSL::Digest.new('SHA3-384'),
-  sha3_512: OpenSSL::Digest.new('SHA3-512'),
-  blake2s256: OpenSSL::Digest.new('BLAKE2s256'),
-  blake2b512: OpenSSL::Digest.new('BLAKE2b512')
+  md5: 'MD5',
+  sha1: 'SHA1',
+  sha224: 'SHA224',
+  sha256: 'SHA256',
+  sha384: 'SHA384',
+  sha512: 'SHA512',
+  sha512_224: 'SHA512-224',
+  sha512_256: 'SHA512-256',
+  sha3_224: 'SHA3-224',
+  sha3_256: 'SHA3-256',
+  sha3_384: 'SHA3-384',
+  sha3_512: 'SHA3-512',
+  blake2s256: 'BLAKE2s256',
+  blake2b512: 'BLAKE2b512'
 }.freeze
 
 HASH_TYPE = :sha256
@@ -74,8 +74,7 @@ def hash_func(*args)
            arg
          end
   end
-  HASH_FUNCTIONS[HASH_TYPE].reset
-  HASH_FUNCTIONS[HASH_TYPE].digest(t)
+  OpenSSL::Digest.new(HASH_FUNCTIONS[HASH_TYPE]).digest(t)
 end
 
 #
