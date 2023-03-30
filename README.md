@@ -10,6 +10,8 @@ the [research paper](https://eprint.iacr.org/2016/027.pdf) or their [website](ht
 
 This is a direct port of the Python [implementation](https://github.com/nachonavarro/balloon-hashing) by [nachonavarro](https://github.com/nachonavarro).
 
+**Warning:** Please DO NOT use this code in production! It has not been tested rigorously for security vulnerabilities.
+
 ## Background
 
 Balloon Hashing is a new hashing function that, according to the paper, is:
