@@ -42,14 +42,14 @@ describe 'balloon' do
   test_vectors.each do |test_vector|
     it "returns #{test_vector[:output]} when password = #{test_vector[:password]}, salt = #{test_vector[:salt]},
      s_cost = #{test_vector[:s_cost]}, t_cost = #{test_vector[:t_cost]}" do
-      expect(balloon(test_vector[:password],
-                     test_vector[:salt],
-                     test_vector[:s_cost],
-                     test_vector[:t_cost])
+      test_params = test_vector.values
+      expect(balloon(*test_params[0...4])
                      .unpack1('H*')).to eq(test_vector[:output])
       expect(balloon_hash(test_vector[:password], test_vector[:salt])).to eq(
         balloon(test_vector[:password], test_vector[:salt], 16, 20, 4).unpack1('H*')
       )
+      expect(verify(test_vector[:output], *test_params[0...4])).to be true
+      expect(verify('0' * 64, *test_params[0...4])).to be false
     end
   end
 end
@@ -124,15 +124,14 @@ describe 'balloon_m' do
   test_vectors.each do |test_vector|
     it "returns #{test_vector[:output]} when password = #{test_vector[:password]}, salt = #{test_vector[:salt]},
      s_cost = #{test_vector[:s_cost]}, t_cost = #{test_vector[:t_cost]}, p_cost = #{test_vector[:p_cost]}" do
-      expect(balloon_m(test_vector[:password],
-                       test_vector[:salt],
-                       test_vector[:s_cost],
-                       test_vector[:t_cost],
-                       test_vector[:p_cost])
+      test_params = test_vector.values
+      expect(balloon_m(*test_params[0...5])
                      .unpack1('H*')).to eq(test_vector[:output])
       expect(balloon_m_hash(test_vector[:password], test_vector[:salt])).to eq(
         balloon_m(test_vector[:password], test_vector[:salt], 16, 20, 4, 4).unpack1('H*')
       )
+      expect(verify_m(test_vector[:output], *test_params[0...5])).to be true
+      expect(verify_m('0' * 64, *test_params[0...5])).to be false
     end
   end
 end

@@ -226,3 +226,41 @@ def balloon_m_hash(password, salt)
   parallel_cost = 4
   balloon_m(password, salt, space_cost, time_cost, parallel_cost, delta).unpack1('H*')
 end
+
+#
+# Verify that hash matches password when hashed with salt, space_cost,
+# time_cost, and delta.
+#
+# @param [String] The hash to check against.
+# @param [String] password The main string to hash.
+# @param [String] salt A user defined random value for security.
+# @param [Integer] space_cost The size of the buffer.
+# @param [Integer] time_cost Number of rounds to mix.
+# @param [Integer] delta Number of random blocks to mix with. Defaults to 3.
+#
+# @return [TrueClass] True if password matches hash, otherwise False.
+#
+def verify(hash, password, salt, space_cost, time_cost, delta = 3)
+  OpenSSL.secure_compare(balloon(password, salt, space_cost, time_cost, delta).unpack1('H*'), hash)
+end
+
+#
+# Verify that hash matches password when hashed with salt, space_cost,
+# time_cost, parallel_cost, and delta.
+# This uses the M-core variant of the Balloon hashing algorithm.
+#
+# @param [String] The hash to check against.
+# @param [String] password The main string to hash.
+# @param [String] salt A user defined random value for security.
+# @param [Integer] space_cost The size of the buffer.
+# @param [Integer] time_cost Number of rounds to mix.
+# @param [Integer] parallel_cost Number of concurrent instances.
+# @param [Integer] delta Number of random blocks to mix with. Defaults to 3.
+#
+# @return [TrueClass] True if password matches hash, otherwise False.
+#
+def verify_m(hash, password, salt, space_cost, time_cost, parallel_cost, delta = 3)
+  OpenSSL.secure_compare(
+    balloon_m(password, salt, space_cost, time_cost, parallel_cost, delta).unpack1('H*'), hash
+  )
+end

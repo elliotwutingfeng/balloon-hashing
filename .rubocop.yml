@@ -9,7 +9,7 @@ Metrics/CyclomaticComplexity:
 Metrics/MethodLength:
   Max: 15
 Metrics/ParameterLists:
-  Max: 6
+  Max: 7
 Naming/VariableNumber:
   Enabled: false
 Style/FrozenStringLiteralComment:
