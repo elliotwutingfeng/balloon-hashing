@@ -1,8 +1,7 @@
 # Balloon Hashing
 
 [![Ruby](https://img.shields.io/badge/Ruby-CC342D?style=for-the-badge&logo=ruby&logoColor=white)](https://ruby-lang.org)
-[![Codecov Coverage](https://img.shields.io/codecov/c/github/elliotwutingfeng/balloon-hashing?color=bright-green&logo=codecov&style=for-the-badge&token=bAIdJbJmW0)](https://codecov.io/gh/elliotwutingfeng/balloon-hashing)
-
+[![Coveralls](https://img.shields.io/coverallsCoverage/github/elliotwutingfeng/balloon-hashing?logo=coveralls&style=for-the-badge)](https://coveralls.io/github/elliotwutingfeng/balloon-hashing?branch=main)
 [![GitHub license](https://img.shields.io/badge/LICENSE-BSD--3--CLAUSE-GREEN?style=for-the-badge)](LICENSE)
 
 Balloon Hashing implemented in Ruby. All credit to Dan Boneh, Henry Corrigan-Gibbs, and Stuart Schechter. For more information see
