@@ -54,7 +54,7 @@ bs.unpack1('H*') # OUTPUT: 69f86890cef40a7ec5f70daff1ce8e2cde233a15bffa785e7efdb
 ```bash
 gem install bundler
 bundle install
-bundle exec rspec
+bundle exec rspec -r spec_helper
 ```
 
 ## Formatting
