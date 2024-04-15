@@ -196,9 +196,8 @@ end
 # @return [String] A series of bytes, the hash.
 #
 def balloon_m(password, salt, space_cost, time_cost, parallel_cost, delta = 3)
-  threads = []
-  (0...parallel_cost).each do |p|
-    threads << Thread.new do
+  threads = (0...parallel_cost).map do |p|
+    Thread.new do
       parallel_salt = "#{salt}#{(p + 1).to_bytestring}"
       balloon(password, parallel_salt, space_cost, time_cost, delta)
     end

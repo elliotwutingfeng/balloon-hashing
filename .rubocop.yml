@@ -1,3 +1,6 @@
+require:
+  - rubocop-rspec
+
 AllCops:
     NewCops: enable
     TargetRubyVersion: 2.0
@@ -15,5 +18,13 @@ Metrics/ParameterLists:
     Max: 7
 Naming/VariableNumber:
     Enabled: false
+RSpec/DescribeClass:
+    Enabled: false
+RSpec/ExampleLength:
+    Max: 8
+RSpec/MultipleDescribes:
+    Enabled: false
+RSpec/MultipleExpectations:
+    Max: 4
 Style/FrozenStringLiteralComment:
     Enabled: false
