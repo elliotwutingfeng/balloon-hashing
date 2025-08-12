@@ -121,7 +121,7 @@ def mix(buf, cnt, delta, salt, space_cost, time_cost)
       (0...delta).each do |i|
         idx_block = hash_func(t, s, i)
         # Converts byte array to integer (little endian), see https://stackoverflow.com/a/68855488
-        other = (hash_func(cnt, salt, idx_block).bytes.reverse.inject(0) { |m, b| (m << 8) + b }) % space_cost
+        other = hash_func(cnt, salt, idx_block).bytes.reverse.inject(0) { |m, b| (m << 8) + b } % space_cost
         cnt += 1
         buf[s] = hash_func(cnt, buf[s], buf[other])
         cnt += 1
