@@ -22,6 +22,8 @@ RSpec/DescribeClass:
     Enabled: false
 RSpec/ExampleLength:
     Max: 8
+RSpec/LeakyLocalVariable:
+    Enabled: false
 RSpec/MultipleDescribes:
     Enabled: false
 RSpec/MultipleExpectations:
