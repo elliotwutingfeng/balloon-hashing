@@ -13,7 +13,7 @@ jobs:
 
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.4.7
+          ruby-version: 3.4.8
 
       - name: Run bundle install
         run: |
@@ -50,7 +50,7 @@ jobs:
 
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.4.7
+          ruby-version: 3.4.8
 
       - name: Install rubocop
         run: |
